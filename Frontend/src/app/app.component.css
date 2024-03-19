@@ -1,0 +1,25 @@
+tr{
+    text-align: center;
+}
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+input{
+    width: 450px;
+    margin: 10px 0px;
+    box-shadow: black 0px 0px 8px 1px;
+}
+
+button{
+    margin: 10px;
+}
+#formbtn1{
+    margin: 15px 10px 35px 0px;
+}
+#formbtn2{
+    margin: 15px 10px 35px 0px;
+}
+#formbtn3{
+    margin: 15px 10px 35px 0px;
+}

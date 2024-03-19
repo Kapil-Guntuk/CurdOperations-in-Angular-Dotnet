@@ -1,0 +1,74 @@
+<h2>CURD OPERATIONS</h2>
+
+<div class="container">
+  <div id="formcontainer">
+    <form #userForm="ngForm" (ngSubmit)="updateUser(userForm.value)" *ngIf="isEditMode; else addMode">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" ngModel name="Name" required [value]="editUserData.Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" ngModel name="Email" required [value]="editUserData.Email">
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" ngModel name="Age" required [value]="editUserData.Age">
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile No.:</label>
+        <input type="text" class="form-control" id="mobile" ngModel name="Mobilenum" required [value]="editUserData.Mobilenum">
+      </div>
+      <button type="submit" id="formbtn1" class="btn btn-primary">{{ getButtonLabel() }}</button>
+      <button type="button" id="formbtn2" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </form>
+  
+    <ng-template #addMode>
+      <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" ngModel name="Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" ngModel name="Email" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" class="form-control" id="age" ngModel name="Age" required>
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile No.:</label>
+          <input type="text" class="form-control" id="mobile" ngModel name="Mobilenum" required>
+        </div>
+        <button type="submit" id="formbtn3" class="btn btn-primary">Add New User</button>
+      </form>
+    </ng-template>
+  </div>
+  <div class="container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <th scope="col">Mobile No.</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.Id}}</td>
+          <td>{{user.Name}}</td>
+          <td>{{user.Email}}</td>
+          <td>{{user.Age}}</td>
+          <td>{{user.Mobilenum}}</td>
+          <td><button class="btn btn-primary" (click)="editUser(user.Id)">Edit</button></td>
+          <td><button class="btn btn-danger" (click)="deleteUser(user.Id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
